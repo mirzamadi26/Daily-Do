@@ -3,6 +3,7 @@ import 'package:daily_do/view/auth/controller/auth_controller.dart';
 import 'package:daily_do/view/edit/controller/edit_controller.dart';
 import 'package:daily_do/view/home/controller/home_controller.dart';
 import 'package:daily_do/view/home/controller/theme_controller.dart';
+import 'package:daily_do/view/splash/controller/splash_controller.dart';
 import 'package:get/get.dart';
 
 class ScreenBindings extends Bindings {
@@ -14,5 +15,6 @@ class ScreenBindings extends Bindings {
     Get.lazyPut(() => AddTaskController());
     Get.lazyPut(() => AuthController());
     Get.lazyPut(() => EditTaskController());
+    Get.lazyPut(() => SplashController());
   }
 }

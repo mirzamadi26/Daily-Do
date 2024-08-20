@@ -2,12 +2,15 @@ import 'package:daily_do/utils/app_colors.dart';
 import 'package:daily_do/utils/app_images.dart';
 import 'package:daily_do/utils/app_strings.dart';
 import 'package:daily_do/utils/text_styles.dart';
+import 'package:daily_do/view/add_task/view/add_task.dart';
+import 'package:daily_do/view/drawer/view/drawer.dart';
 import 'package:daily_do/view/home/components/categories_widget.dart';
 import 'package:daily_do/view/home/components/home_header.dart';
 import 'package:daily_do/view/home/components/task_list_tile.dart';
 import 'package:daily_do/view/home/controller/home_controller.dart';
 import 'package:daily_do/view/home/controller/theme_controller.dart';
 import 'package:daily_do/view/home/view/task_category_screen.dart';
+import 'package:daily_do/view/home/view/task_details.dart';
 import 'package:daily_do/widgets/custom_scaffold.dart';
 import 'package:daily_do/widgets/custom_textform_field.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +24,15 @@ class TaskListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.getTaskCountByCategory('Work');
+    controller.getTaskCountByCategory('Personal');
+    controller.getTaskCountByCategory('Shopping');
     return SafeArea(
         child: DefaultTabController(
       length: 3,
       child: Scaffold(
+        //Drawer
+        drawer: CustomDrawer(),
         key: controller.scaffoldKey,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +49,7 @@ class TaskListScreen extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    //Search Field Here
                     CustomTextFormField(
                       focusNode: controller.searchFocus,
                       controller: controller.searchController,
@@ -54,6 +63,7 @@ class TaskListScreen extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
+                    // Show Categories
                     Text(
                       "Categories",
                       style: TextStyles.labelPoppinsTextStyle().copyWith(
@@ -64,7 +74,12 @@ class TaskListScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    CategoriesWidget(controller: controller),
+                    Obx(() {
+                      controller.getTaskCountByCategory('Work');
+                      controller.getTaskCountByCategory('Personal');
+                      controller.getTaskCountByCategory('Shopping');
+                      return CategoriesWidget(controller: controller);
+                    }),
                     SizedBox(
                       height: 20,
                     ),
@@ -223,8 +238,7 @@ class TaskListScreen extends StatelessWidget {
                                       ? InkWell(
                                           onTap: () {
                                             Get.toNamed(taskDetailScreen,
-                                                arguments:
-                                                    task); // Pass the task to the detail screen
+                                                arguments: task);
                                           },
                                           child: TasksListTile(
                                             task: task,
@@ -247,7 +261,11 @@ class TaskListScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.toNamed(addTaskScreen);
+            Get.to(
+              AddTaskScreen(),
+              transition: Transition.rightToLeft,
+              duration: Duration(milliseconds: 300),
+            );
           },
           child: Icon(
             Icons.add,

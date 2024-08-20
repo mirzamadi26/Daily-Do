@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: kAppName,
       debugShowCheckedModeBanner: false,
-      initialRoute: signInView,
+      initialRoute: splashView,
       theme: Themes().lightTheme,
       darkTheme: Themes().darkTheme,
       initialBinding: ScreenBindings(),

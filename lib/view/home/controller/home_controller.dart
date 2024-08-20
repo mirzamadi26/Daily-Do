@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily_do/models/task_model.dart';
 import 'package:daily_do/models/user_model.dart';
 import 'package:daily_do/services/api_service.dart';
+import 'package:daily_do/utils/app_strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class HomeController extends GetxController {
   final searchController = TextEditingController();
   final searchFocus = FocusNode();
   DateTime selectedDay = DateTime.now();
+  final auth = FirebaseAuth.instance;
 
   DateTime focusedDay = DateTime.now();
   RxString searchQuery = ''.obs;
@@ -27,6 +29,7 @@ class HomeController extends GetxController {
     super.onInit();
     fetchUserData();
     fetchTasks();
+
     searchController.addListener(() {
       searchQuery.value = searchController.text;
       update();
@@ -126,7 +129,15 @@ class HomeController extends GetxController {
       // Handle the error appropriately, like showing a message to the user
     }
   }
-    int getTaskCountByCategory(String category) {
+
+  int getTaskCountByCategory(String category) {
     return tasks.where((task) => task.category == category).length;
+  }
+
+  void logout() {
+    auth.signOut();
+    Get.offAllNamed(
+      signInView,
+    );
   }
 }

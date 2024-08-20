@@ -35,53 +35,56 @@ class CategoriesWidget extends StatelessWidget {
             category = "Shopping";
             icon = AppImages.shoppingIcon;
           }
+          return GetBuilder<HomeController>(
+            builder: (controller) {
+              int taskCount = controller.getTaskCountByCategory(category);
 
-          int taskCount = controller.getTaskCountByCategory(category);
-
-          return GestureDetector(
-            onTap: () {
-              Get.to(() => TaskCategoryScreen(category: category));
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => TaskCategoryScreen(category: category));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Container(
+                    width: Get.width / 2.5,
+                    height: Get.height / 6,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: index == 0
+                          ? kGreenColor.withOpacity(0.7)
+                          : index == 1
+                              ? kYellowColor.withOpacity(0.8)
+                              : kOrangeColor,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image.asset(
+                          icon,
+                          width: 50,
+                        ),
+                        Text(
+                          category,
+                          style: TextStyles.labelPoppinsTextStyle().copyWith(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            color: kWhiteColor,
+                          ),
+                        ),
+                        Text(
+                          "$taskCount Tasks",
+                          style: TextStyles.labelPoppinsTextStyle().copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: kWhiteColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
             },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                width: Get.width / 2.5,
-                height: Get.height / 6,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: index == 0
-                      ? kGreenColor.withOpacity(0.7)
-                      : index == 1
-                          ? kYellowColor.withOpacity(0.8)
-                          : kOrangeColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset(
-                      icon,
-                      width: 50,
-                    ),
-                    Text(
-                      category,
-                      style: TextStyles.labelPoppinsTextStyle().copyWith(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                        color: kWhiteColor,
-                      ),
-                    ),
-                    Text(
-                      "$taskCount Tasks",
-                      style: TextStyles.labelPoppinsTextStyle().copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: kWhiteColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           );
         },
       ),

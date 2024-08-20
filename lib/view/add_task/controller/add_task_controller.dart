@@ -105,6 +105,10 @@ class AddTaskController extends GetxController {
       await _firestore.collection('tasks').doc(task.taskId).set(task.toMap());
       await Get.find<HomeController>().fetchTasks();
       isLoading.value = false;
+      titleCont.clear();
+      descCont.clear();
+      dateCont.clear();
+      timeCont.clear();
       Get.back();
       Get.snackbar('Success', 'Task added Successfully');
     }

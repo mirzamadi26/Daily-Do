@@ -5,11 +5,16 @@ import 'package:daily_do/view/auth/view/sign_in_screen.dart';
 import 'package:daily_do/view/auth/view/sign_up_screen.dart';
 import 'package:daily_do/view/home/view/task_details.dart';
 import 'package:daily_do/view/home/view/task_home.dart';
+import 'package:daily_do/view/splash/view/splash.dart';
 import 'package:get/get.dart';
 
 class RouteGenerator {
   static List<GetPage> getPages() {
     return [
+      GetPage(
+          name: splashView,
+          page: () => SplashScreen(),
+          binding: ScreenBindings()),
       GetPage(
           name: homeScreen,
           page: () => TaskListScreen(),

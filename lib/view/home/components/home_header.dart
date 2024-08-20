@@ -33,43 +33,17 @@ class HomeHeader extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    controller.fetchQuote();
-                    Get.defaultDialog(
-                        title: 'Random Quote',
-                        content: Obx(() {
-                          if (controller.isLoading.value) {
-                            return CircularProgressIndicator();
-                          } else {
-                            return Text(
-                              textAlign: TextAlign.justify,
-                              controller.quote.value,
-                              style: TextStyles.labelPoppinsTextStyle()
-                                  .copyWith(
-                                      fontSize: 14,
-                                      color: kYellowColor,
-                                      fontWeight: FontWeight.bold),
-                            );
-                          }
-                        }),
-                        confirm: SizedBox(
-                          width: Get.width / 2,
-                          child: CustomButtonWidget(
-                            btnLabel: 'Close',
-                            onTap: () {
-                              Get.close(1);
-                            },
-                          ),
-                        ));
+                    Scaffold.of(context).openDrawer();
                   },
                   child: Container(
-                      width: 50,
-                      height: 50,
+                      width: 40,
+                      height: 40,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: kWhiteColor),
                       child: Icon(
-                        Icons.format_quote_sharp,
+                        Icons.menu,
                         color: kGreenColor,
-                        size: 30,
+                        size: 25,
                       )),
                 ),
                 Obx(() => Text(

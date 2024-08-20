@@ -108,7 +108,10 @@ class EditTaskController extends GetxController {
           .update(task.toMap());
       await Get.find<HomeController>().fetchTasks();
       isLoading.value = false;
-
+      titleCont.clear();
+      descCont.clear();
+      dateCont.clear();
+      timeCont.clear();
       Get.close(2);
       Get.snackbar('Success', 'Task updated successfully');
     }

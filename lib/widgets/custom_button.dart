@@ -1,5 +1,6 @@
 import 'package:daily_do/utils/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:get/get.dart';
 
@@ -65,7 +66,10 @@ class CustomButtonWidget extends StatelessWidget {
                   fontSize: 16,
                   color: kWhiteColor),
         ),
-      ),
+      ).animate().scale(
+            curve: Curves.elasticOut,
+            duration: 200.ms,
+          ),
     );
   }
 }
