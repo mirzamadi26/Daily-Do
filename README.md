@@ -1,16 +1,11 @@
-# daily_do
+# Task Management App
 
-A new Flutter project.
+## Flutter Version
 
-## Getting Started
+Ensure that you are using **Flutter version 3.22.2 or above.
 
-This project is a starting point for a Flutter application.
+## Overview
 
-A few resources to get you started if this is your first Flutter project:
+This application is a task management tool that allows users to sign up and sign in to manage their tasks effectively. Users can add, edit, and delete tasks, view them by categories, and utilize a search function to find specific tasks. The app also provides a random quote feature for inspiration and supports dark mode for enhanced user experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Setup Instructions
