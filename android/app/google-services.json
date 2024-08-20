@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "736620885235",
+    "project_id": "daily-do-f5bdf",
+    "storage_bucket": "daily-do-f5bdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736620885235:android:701e80586b767278b6f386",
+        "android_client_info": {
+          "package_name": "com.dailydo.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8JZuvhF10vnmkBuqSMKS-F2WNfsE6ysA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
